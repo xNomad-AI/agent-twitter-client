@@ -492,6 +492,7 @@ export class Scraper {
       replyToTweetId,
       mediaData,
       hideLinkPreview,
+      this.options?.fetch
     );
   }
 
@@ -505,6 +506,7 @@ export class Scraper {
       this.auth,
       replyToTweetId,
       mediaData,
+      this.options?.fetch
     );
   }
 
@@ -525,6 +527,7 @@ export class Scraper {
       this.auth,
       replyToTweetId,
       mediaData,
+      this.options?.fetch
     );
   }
 

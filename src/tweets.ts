@@ -456,7 +456,9 @@ export async function createCreateTweetRequest(
   tweetId?: string,
   mediaData?: { data: Buffer; mediaType: string }[],
   hideLinkPreview = false,
+  fetchFn?: typeof fetch,
 ) {
+  fetchFn = fetchFn ?? fetch;
   const onboardingTaskUrl = 'https://api.twitter.com/1.1/onboarding/task.json';
 
   const cookies = await auth.cookieJar().getCookies(onboardingTaskUrl);
@@ -507,7 +509,7 @@ export async function createCreateTweetRequest(
     variables.reply = { in_reply_to_tweet_id: tweetId };
   }
 
-  const response = await fetch(
+  const response = await fetchFn(
     'https://twitter.com/i/api/graphql/a1p9RWpkYKBjWv_I3WzS-A/CreateTweet',
     {
       headers,
@@ -574,7 +576,9 @@ export async function createCreateNoteTweetRequest(
   auth: TwitterAuth,
   tweetId?: string,
   mediaData?: { data: Buffer; mediaType: string }[],
+  fetchFn?: typeof fetch,
 ) {
+  fetchFn = fetchFn ?? fetch;
   const onboardingTaskUrl = 'https://api.twitter.com/1.1/onboarding/task.json';
 
   const cookies = await auth.cookieJar().getCookies(onboardingTaskUrl);
@@ -620,7 +624,7 @@ export async function createCreateNoteTweetRequest(
     variables.reply = { in_reply_to_tweet_id: tweetId };
   }
 
-  const response = await fetch(
+  const response = await fetchFn(
     'https://twitter.com/i/api/graphql/0aWhJJmFlxkxv9TAUJPanA/CreateNoteTweet',
     {
       headers,
@@ -1397,7 +1401,9 @@ export async function createCreateLongTweetRequest(
   auth: TwitterAuth,
   tweetId?: string,
   mediaData?: { data: Buffer; mediaType: string }[],
+  fetchFn?: typeof fetch,
 ) {
+  fetchFn = fetchFn ?? fetch;
   // URL for the long tweet endpoint
   const url =
     'https://x.com/i/api/graphql/YNXM2DGuE2Sff6a2JD3Ztw/CreateNoteTweet';
@@ -1476,7 +1482,7 @@ export async function createCreateLongTweetRequest(
     responsive_web_enhance_cards_enabled: false,
   };
 
-  const response = await fetch(url, {
+  const response = await fetchFn(url, {
     headers,
     body: JSON.stringify({
       variables,
