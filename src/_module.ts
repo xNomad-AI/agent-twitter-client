@@ -5,6 +5,7 @@ export type { QueryProfilesResponse, QueryTweetsResponse } from './timeline-v1';
 export type { Tweet } from './tweets';
 
 export { Space } from './spaces/core/Space';
+export type { SpaceConfig } from './spaces/core/Space';
 export { SpaceParticipant } from './spaces/core/SpaceParticipant';
 export { JanusClient } from './spaces/core/JanusClient';
 export { JanusAudioSink, JanusAudioSource } from './spaces/core/JanusAudio';
